@@ -4,20 +4,69 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Synergisic Biotech</title>
+
+    <title><%= typeof pageTitle !== 'undefined' ? pageTitle : 'Synergistic Biotech Pvt Ltd | Medical Nutrition Solutions' %></title>
+    <meta name="description" content="<%= typeof pageDescription !== 'undefined' ? pageDescription : 'Synergistic Biotech Pvt Ltd offers high-quality evidence-based medical nutrition products including RAW PRO HP and RAW PRO CRITIPEP for critical care and healthcare professionals.' %>">
+    <meta name="keywords" content="<%= typeof pageKeywords !== 'undefined' ? pageKeywords : 'medical nutrition, clinical nutrition, whey protein, critical care nutrition, healthcare nutrition, Synergistic Biotech, RAW PRO HP, RAW PRO CRITIPEP' %>">
     <meta name="robots" content="index, follow">
+    <meta name="author" content="Synergistic Biotech Pvt Ltd">
+    <% if (typeof canonicalUrl !== 'undefined') { %><link rel="canonical" href="<%= canonicalUrl %>"><% } %>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="<%= typeof ogType !== 'undefined' ? ogType : 'website' %>">
+    <meta property="og:site_name" content="Synergistic Biotech Pvt Ltd">
+    <meta property="og:title" content="<%= typeof pageTitle !== 'undefined' ? pageTitle : 'Synergistic Biotech Pvt Ltd | Medical Nutrition Solutions' %>">
+    <meta property="og:description" content="<%= typeof pageDescription !== 'undefined' ? pageDescription : 'High-quality evidence-based medical nutrition products for critical care and healthcare professionals.' %>">
+    <% if (typeof ogImage !== 'undefined') { %><meta property="og:image" content="<%= ogImage %>"><% } %>
+    <% if (typeof canonicalUrl !== 'undefined') { %><meta property="og:url" content="<%= canonicalUrl %>"><% } %>
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<%= typeof pageTitle !== 'undefined' ? pageTitle : 'Synergistic Biotech Pvt Ltd | Medical Nutrition Solutions' %>">
+    <meta name="twitter:description" content="<%= typeof pageDescription !== 'undefined' ? pageDescription : 'High-quality evidence-based medical nutrition products for critical care and healthcare professionals.' %>">
+    <% if (typeof ogImage !== 'undefined') { %><meta name="twitter:image" content="<%= ogImage %>"><% } %>
+
+    <!-- Structured Data - Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Synergistic Biotech Pvt Ltd",
+      "description": "Medical nutrition company offering high-quality evidence-based clinical nutrition products.",
+      "url": "<%= typeof siteUrl !== 'undefined' ? siteUrl : '' %>",
+      "telephone": "+917086056327",
+      "email": "s_singh200623@rediffmail.com",
+      "address": [
+        {
+          "@type": "PostalAddress",
+          "streetAddress": "105, Summit Business Bay, Andheri East",
+          "addressLocality": "Mumbai",
+          "addressRegion": "Maharashtra",
+          "postalCode": "400093",
+          "addressCountry": "IN"
+        },
+        {
+          "@type": "PostalAddress",
+          "streetAddress": "Chetia Building, Borbari Chari Ali, Hengrabari",
+          "addressLocality": "Guwahati",
+          "addressRegion": "Assam",
+          "postalCode": "781036",
+          "addressCountry": "IN"
+        }
+      ]
+    }
+    </script>
+    <% if (typeof structuredData !== 'undefined') { %>
+    <script type="application/ld+json"><%- JSON.stringify(structuredData) %></script>
+    <% } %>
 
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link
-          rel="stylesheet"
-          href="https://unpkg.com/swiper/swiper-bundle.min.css"
-        />
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <!-- custom css file link  -->
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
 
-    <link rel="icon"  href="images\favicon-32x32.png"  />
+    <link rel="icon" href="/images/favicon-32x32.png">
 
     <!-- Demo styles -->
    <style>
@@ -64,16 +113,13 @@
 
 <header class="header">
 
-    <a href="#" class="logo"> <img src="images\brand_logo.jpeg" alt="Brand logo"> </a>
+    <a href="/" class="logo"> <img src="/images/brand_logo.jpeg" alt="Synergistic Biotech Pvt Ltd - Medical Nutrition Solutions"> </a>
 
-    <nav class="navbar">
+    <nav class="navbar" aria-label="Main navigation">
         <a href="/">HOME</a>
-        <a href="#about">ABOUT US </a>
+        <a href="/#about">ABOUT US</a>
         <a href="/product">PRODUCTS</a>
-        <a href="#facility">FACILITIES</a>
-          <a href="/contact">CONTACT US</a>
-        <!-- <a href="#review">review</a> -->
-
+        <a href="/contact">CONTACT US</a>
     </nav>
 
     <div id="menu-btn" class="fas fa-bars"></div>
