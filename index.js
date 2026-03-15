@@ -2,12 +2,17 @@ const express = require("express");
 const ejs = require("ejs");
 const mongoose = require('mongoose');
 const bodyParser = require("body-parser");
+const path = require("path");
 
 const app = express();
 
+const viewsPath = path.join(__dirname, "views");
+const publicPath = path.join(__dirname, "public");
+
+app.set('views', viewsPath);
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static("public"));
+app.use(express.static(publicPath));
 
 // Optional: configure DB using env var; keep commented if local static deployment is enough
 if (process.env.MONGODB_URI) {
