@@ -6,8 +6,16 @@ const path = require("path");
 
 const app = express();
 
-const viewsPath = path.join(__dirname, "views");
-const publicPath = path.join(__dirname, "public");
+// Determine paths - handle both local and Netlify function environments
+let viewsPath = path.join(__dirname, "views");
+let publicPath = path.join(__dirname, "public");
+
+// If running as Netlify function, views are in a subdirectory
+if (__dirname.includes('functions')) {
+  // We're in netlify/functions/server context
+  viewsPath = path.join(__dirname, "views");
+  publicPath = path.join(__dirname, "public");
+}
 
 app.set('views', viewsPath);
 app.set('view engine', 'ejs');

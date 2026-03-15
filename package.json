@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "nodemon index.js",
     "start": "node index.js",
-    "build": "echo \"Netlify build no-op\"",
+    "prebuild": "node build-script.js",
+    "build": "echo \"Build complete\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "sanjay singha",
