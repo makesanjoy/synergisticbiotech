@@ -6,8 +6,10 @@ const path = require("path");
 
 const app = express();
 
-const viewsPath = path.join(__dirname, "views");
-const publicPath = path.join(__dirname, "public");
+const isNetlify = !!process.env.LAMBDA_TASK_ROOT;
+const basePath = isNetlify ? process.env.LAMBDA_TASK_ROOT : __dirname;
+const viewsPath = path.join(basePath, "views");
+const publicPath = path.join(basePath, "public");
 
 app.set('views', viewsPath);
 app.engine('ejs', ejs.renderFile);
