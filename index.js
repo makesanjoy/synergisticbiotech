@@ -3,31 +3,26 @@ const ejs = require("ejs");
 const mongoose = require('mongoose');
 const bodyParser = require("body-parser");
 
-
 const app = express();
 
 app.set('view engine', 'ejs');
-
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
+// Optional: configure DB using env var; keep commented if local static deployment is enough
+if (process.env.MONGODB_URI) {
+  mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+}
 
-// mongoose.connect("mongodb+srv://sanjaysingha:123Machine@cluster0.qffoa.mongodb.net/synergisticFORM?retryWrites=true&w=majority", {useNewUrlParser: true});
-
-
-// const formSchema =new  mongoose.Schema( {
-//   Name: String,
-//  Number: Number,
-//  Email:String
-// });
-
-// const Form = mongoose.model("Form", formSchema);
+const formSchema = new mongoose.Schema({
+  Name: String,
+  Number: Number,
+  Email: String
+});
+const Form = mongoose.model("Form", formSchema);
 
 app.get("/", function (req, res) {
-  res.render("home", {
-
-  });
-
+  res.render("home", {});
 });
 app.get("/product", function (req, res) {
   res.render("product", {
@@ -48,17 +43,20 @@ app.post("/", function (req, res) {
     Email: req.body.email,
   });
 
-
   form.save(function (err) {
     if (!err) {
       res.redirect("/");
+    } else {
+      res.status(500).send("Error saving form");
     }
   });
 });
 
+module.exports = app;
 
-
-
-app.listen(3000, function () {
-  console.log("Server started on port 3000");
-});
+if (require.main === module) {
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, function () {
+    console.log("Server started on port " + PORT);
+  });
+}

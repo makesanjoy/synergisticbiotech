@@ -4,6 +4,9 @@
   "description": "this is pharamtical website",
   "main": "index.js",
   "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js",
+    "build": "echo \"Netlify build no-op\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "sanjay singha",
